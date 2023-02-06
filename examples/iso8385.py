@@ -70,35 +70,22 @@ if os.path.isfile(mysession_filename):
 
 
 
-# http://localhost:56711
 target_ip = "127.0.0.1"
-start_cmd = ['MYDI_SID','030001']
 
 sess   = Session(session_filename=mysession_filename,crash_threshold_request=12)
 
 
 
 
-#target = sessions.target(target_ip, 6771)
 
 target=Target(
-            connection=SocketConnection(target_ip,56711, proto="tcp"),
-            #procmon=pedrpc.Client(target_ip, 26002),
-            #procmon_options={"start_commands": [start_cmd]},
+            connection=SocketConnection(target_ip,56711, proto="tcp")
         )
 
 
 
 
 
-#target.netmon    = pedrpc.client("127.0.0.1", 26001)
-#target.procmon   = pedrpc.client(target_ip, 26013)
-#target.procmon_options = \
-#    {
-#        "proc_name"      : "BANK_SID 030001",
-#        "start_commands"  : ['/usr/bin/startsid'],
-#        "stop_commands" : ['/usr/bin/killsid'],
-#    }
 sess.add_target(target)
 
 
